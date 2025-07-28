@@ -57,7 +57,7 @@ export default function ContactUs() {
   ]
 
   return (
-    <section id="contact" className="relative min-h-screen flex items-center justify-center py-10 px-4">
+    <section id="contact" className="relative flex items-center justify-center py-10 px-4">
       {/* Background with shipping containers */}
       <div className="absolute h-full w-full inset-0 bg-[url('/assets/image/contactUs/contact_us_bg.png')] "></div>
 
