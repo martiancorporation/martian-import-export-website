@@ -9,7 +9,7 @@ import ContactForm from '../components/contact-form'
 export default function Hero() {
     const location = ["Near Biswa bangla gate", "Near Aliah university kolkata", "Near Amity university kolkata", "Near Tata medical centre kolkata", "Near Eco park kolkata", "Near Coal bhawan kolkata", "Near physics wallah kolkata", "Near Ecospace business park", "Near Sister Nivedita University", "Near Techno india newtown", "others"]
     return (
-        <section className="relative h-[100vh] md:min-h-[100vh] w-full ">
+        <section className="relative h-[100vh] md:h-full w-full ">
             <div className="w-full h-full absolute inset-0 z-0">
                 <video
                     src="/assets/video/hero_video.mp4"
