@@ -9,14 +9,14 @@ export default function certification() {
         { name: "ISO 9001:2015", logo: "/assets/image/certification/iso.png" }
     ];
     return (
-        <section className="py-8 sm:py-12 lg:py-[30px] bg-cover bg-center relative"
+        <section id="facilities" className="w-full bg-cover bg-center relative"
             style={{ backgroundImage: "url('/assets/image/certification/bg.png')" }}
         >
             <div className="absolute top-0 left-0 w-full h-full bg-[#000000BF] z-10"></div>
-            <div className="w-full max-w-[1301px] mx-auto px-4 sm:px-6 lg:px-[38px] z-20">
+            <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 xl:px-12 py-6 md:py-8 xl:py-10 z-20">
                 <div className="space-y-6 sm:space-y-8 lg:space-y-[26px] text-center">
                     {/* Section Header */}
-                    <div className="space-y-1 lg:space-y-[2px] pt-8 sm:pt-12 lg:pt-[34px] z-20 text-center relative">
+                    <div className="space-y-1 lg:space-y-[2px]  z-20 text-center relative">
                         <h2 className="text-xl sm:text-2xl z-30 lg:text-[28px] font-lato font-semibold leading-tight lg:leading-[34px] text-[#FFFFFF]">
                             Certifications & Compliance
                         </h2>
@@ -28,7 +28,7 @@ export default function certification() {
                     {/* Certifications Grid */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-[16px] max-w-4xl mx-auto">
                         {certifications.map((cert, index) => (
-                            <div key={index} className="bg-[#FFFFFF42] z-20 border backdrop-blur-[10px] border-[#FFFFFF66] rounded-[20px] p-4 sm:p-5 lg:p-[18px] flex items-center justify-center min-h-[100px] sm:min-h-[120px] lg:min-h-[120px]">
+                            <div key={index} className="bg-[#FFFFFF42] z-20 border backdrop-blur-[10px] border-[#FFFFFF66] rounded-[20px] p-3 sm:p-5 lg:p-[18px] flex items-center justify-center min-h-[80px] sm:min-h-[120px] lg:min-h-[120px]">
                                 <Image
                                     width={500}
                                     height={500}

@@ -1,153 +1,214 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import PhoneInput, { parsePhoneNumber } from "react-phone-number-input";
+import 'react-phone-number-input/style.css';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
+import API from "@/api";
+import ThankYouModal from "./thank-you-modal";
+import {
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    SelectItem
+} from "@/components/ui/select";
+import { ArrowRight } from "lucide-react";
 
-const ContactForm = () => {
-    const [formData, setFormData] = useState({
-        fullName: '',
-        email: '',
-        phoneCode: '+91',
-        phoneNumber: '',
-        type: '',
-        message: ''
-    })
+export default function ContactForm() {
+    const productOptions = [
+        "Automobile & Spare Parts",
+        "Leather Goods",
+        "Garment Materials",
+        "Food & Snacks",
+        "Others"
+    ];
 
-    const handleInputChange = (field, value) => {
-        setFormData(prev => ({
-            ...prev,
-            [field]: value
-        }))
-    }
+    const {
+        register,
+        handleSubmit,
+        reset,
+        setValue,
+        watch,
+        formState: { errors }
+    } = useForm({
+        defaultValues: {
+            phone_number: "",
+            country_code_string: "IN",
+        }
+    });
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log('Form submitted:', formData)
-    }
+    const [buttonLoading, setButtonLoading] = useState(false);
+    const [isThankYouModalOpen, setIsThankYouModalOpen] = useState(false);
 
-    const countryCodes = [
-        { code: '+91', country: 'India' },
-        { code: '+1', country: 'USA' },
-        { code: '+44', country: 'UK' },
-        { code: '+61', country: 'Australia' },
-        { code: '+86', country: 'China' },
-        { code: '+81', country: 'Japan' },
-        { code: '+49', country: 'Germany' },
-        { code: '+33', country: 'France' },
-    ]
+    const onSubmit = async (data) => {
+        setButtonLoading(true);
+        try {
+            const response = await API.contact.submitContactForm({
+                full_name: data.full_name || "",
+                business_email: data.business_email || "",
+                phone_number: data.phone_number || "",
+                country_code_string: data.country_code_string || "",
+                select_product: data.select_product || "",
+                message: data.message || ""
+            });
 
-    const contactTypes = [
-        'Import Inquiry',
-        'Export Inquiry',
-        'General Inquiry',
-        'Partnership',
-        'Support',
-        'Other'
-    ]
+            // Check if response exists and has success property
+            if (response && response.success) {
+                toast.success("Thank you for contacting us!");
+                // Reset form to default values
+                reset({
+                    full_name: "",
+                    business_email: "",
+                    phone_number: "",
+                    country_code_string: "IN",
+                    select_product: "",
+                    message: ""
+                });
+                setIsThankYouModalOpen(true);
+            } else {
+                toast.error(response?.message || "Failed to submit form. Please try again.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            toast.error("An error occurred while submitting the form");
+        } finally {
+            setButtonLoading(false);
+        }
+    };
+
+    const handleModalClose = () => {
+        setIsThankYouModalOpen(false);
+    };
 
     return (
-        <div className="relative  flex items-center justify-center  ">
-
-            {/* Contact Form Container */}
-            <div className="relative z-10 w-full max-w-md mx-auto">
-                <div className="bg-[#FFFFFF1A] backdrop-blur-md rounded-2xl p-4 border border-[#FFFFFF] shadow-2xl">
-                    {/* Heading with separator line */}
-                    <div className="mb-3">
-                        <h3 className="text-white text-sm font-medium mb-2">Enter you details</h3>
-                        <div className="h-px bg-white/30"></div>
-                    </div>
-
-                    <form onSubmit={handleSubmit} className="space-y-3 text-white">
-                        {/* Full Name */}
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="Full name"
-                                value={formData.fullName}
-                                onChange={(e) => handleInputChange('fullName', e.target.value)}
-                                className="w-full px-4 py-2  text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-gray-800 placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                required
-                            />
+        <>
+            <div className="relative flex items-center justify-center">
+                <div className="relative z-10 w-full max-w-md mx-auto">
+                    <div className="bg-[#FFFFFF1A] backdrop-blur-md rounded-2xl p-4 border border-[#FFFFFF] shadow-2xl">
+                        <div className="mb-3">
+                            <h3 className="text-white text-sm font-medium mb-2">Enter your details</h3>
+                            <div className="h-px bg-white/30"></div>
                         </div>
 
-                        {/* Business Email */}
-                        <div>
-                            <input
-                                type="email"
-                                placeholder="Business email"
-                                value={formData.email}
-                                onChange={(e) => handleInputChange('email', e.target.value)}
-                                className="w-full px-4 py-2  text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-gray-800 placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                required
-                            />
-                        </div>
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 font-inter">
+                            {/* Full Name */}
+                            <div>
+                                <Input
+                                    {...register("full_name", { required: "Name is required" })}
+                                    placeholder="Full name"
+                                    className="bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] placeholder:text-white text-sm shadow-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                />
+                                {errors.full_name && (
+                                    <span className="text-red-500 text-xs">{errors.full_name.message}</span>
+                                )}
+                            </div>
 
-                        {/* Phone Number with Country Code */}
-                        <div className="flex gap-2">
-                            <select
-                                value={formData.phoneCode}
-                                onChange={(e) => handleInputChange('phoneCode', e.target.value)}
-                                className="px-4 py-2  text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                            >
-                                {countryCodes.map((country) => (
-                                    <option key={country.code} value={country.code}>
-                                        {country.code}
-                                    </option>
-                                ))}
-                            </select>
-                            <div className="w-px bg-gray-300/50"></div>
-                            <input
-                                type="tel"
-                                placeholder="Phone number"
-                                value={formData.phoneNumber}
-                                onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
-                                className="flex-1 px-4 py-2  text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-gray-800 placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                required
-                            />
-                        </div>
+                            {/* Business Email */}
+                            <div>
+                                <Input
+                                    type="email"
+                                    {...register("business_email", {
+                                        required: "Email is required",
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: "Invalid email address"
+                                        }
+                                    })}
+                                    placeholder="Business email"
+                                    className="bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] placeholder:text-white text-sm shadow-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                />
+                                {errors.business_email && (
+                                    <span className="text-red-500 text-xs">{errors.business_email.message}</span>
+                                )}
+                            </div>
 
-                        {/* Type Dropdown */}
-                        <div>
-                            <select
-                                value={formData.type}
-                                onChange={(e) => handleInputChange('type', e.target.value)}
-                                className="w-full px-4 py-2  text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                required
-                            >
-                                <option value="" className='text-white'>Type</option>
-                                {contactTypes.map((type) => (
-                                    <option key={type} value={type}>
-                                        {type}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                            {/* Phone Number */}
+                            <div>
+                                <PhoneInput
+                                    international
+                                    defaultCountry="IN"
+                                    value={watch('phone_number')}
+                                    onChange={(value) => {
+                                        setValue('phone_number', value, { shouldValidate: true });
+                                        const phoneNumber = parsePhoneNumber(value || '');
+                                        if (phoneNumber) {
+                                            setValue('country_code_string', phoneNumber.country, { shouldValidate: false });
+                                        } else {
+                                            setValue('country_code_string', '', { shouldValidate: false });
+                                        }
+                                    }}
+                                    placeholder="Enter phone number"
+                                    className="h-9 px-2 placeholder:text-black  bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-white text-sm w-full"
+                                />
+                                {errors.phone_number && (
+                                    <span className="text-red-500 text-xs">{errors.phone_number.message}</span>
+                                )}
+                            </div>
 
-                        {/* Message Textarea */}
-                        <div>
+                            {/* Hidden Country Code Field */}
+                            <input type="hidden" {...register("country_code_string")} />
+
+                            {/* Select Product */}
+                            <div>
+                                <Select
+                                    onValueChange={(value) => setValue("select_product", value, { shouldValidate: true })}
+                                >
+                                    <SelectTrigger className="w-full px-4 py-2 text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-white focus:outline-none focus:ring-2 focus:ring-blue-500 data-[placeholder]:text-white focus:border-transparent">
+                                        <SelectValue className='' placeholder="Product Type" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {productOptions.map((item, index) => (
+                                            <SelectItem key={index} value={item}>
+                                                {item}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                                {errors.select_product && (
+                                    <span className="text-red-500 text-xs">{errors.select_product.message}</span>
+                                )}
+                            </div>
+
+                            {/* Message */}
                             <textarea
+                                {...register("message")}
+                                rows={3}
+                                className="w-full px-4 py-2 text-white text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                                 placeholder="Enter Message"
-                                value={formData.message}
-                                onChange={(e) => handleInputChange('message', e.target.value)}
-                                rows="4"
-                                className="w-full px-4 py-2  text-sm bg-[#F9F9F942] border border-[#FFFFFF4D] rounded-[6px] text-gray-800 placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                                required
                             ></textarea>
-                        </div>
 
-                        {/* Submit Button */}
-                        <button
-                            type="submit"
-                            className="w-full bg-white text-[#121212] px-6 py-2 rounded-[6px] font-semibold hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center text-sm"
-                        >
-                            <span>Submit</span>
-                            <ArrowRight className="w-5 h-5" />
-                        </button>
-                    </form>
+                            {/* Submit Button */}
+                            <Button
+                                type="submit"
+                                className="w-full bg-white text-[#121212] px-6 py-2 rounded-[6px] font-semibold hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center text-sm"
+                                disabled={buttonLoading}
+                            >
+                                {buttonLoading ? (
+                                    <div className="flex items-center gap-1 text-sm">
+                                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Submitting...
+                                    </div>
+                                ) : (
+                                    "Submit"
+                                )}
+                                <ArrowRight className="w-5 h-5" />
+                            </Button>
+                        </form>
+
+                        <ThankYouModal
+                            open={isThankYouModalOpen}
+                            onOpenChange={handleModalClose}
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        </>
+    );
 }
-
-export default ContactForm

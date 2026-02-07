@@ -8,19 +8,21 @@ import GlobalPresence from "./Home/global-presence";
 import WhyChooseUs from "./Home/why-choose-us";
 import Testimonials from "./Home/testimonials";
 import ContactUs from "./Home/contact-us";
+import HeroWithFrom from "./Home/hero-with-from";
 
 export default function Home() {
   return (
     <main className="min-h-screen font-lato">
       <Hero />
+      <HeroWithFrom/>
       <ProductCategories />
       <Services />
       <Certification />
       <AboutUs />
       <GlobalPresence />
-      <WhyChooseUs />
+      <WhyChooseUs  />
       <Testimonials />
-      <ContactUs/>
+      <ContactUs />
     </main>
   );
 }

@@ -3,11 +3,11 @@ import Image from 'next/image'
 
 export default function Footer() {
   const quickLinks = [
-    { name: "Home", href: "#" },
-    { name: "About us", href: "#" },
-    { name: "Products", href: "#" },
-    { name: "Certifications", href: "#" },
-    { name: "Why Us", href: "#" }
+    { name: "Home", href: "#home" },
+    { name: "About us", href: "#about" },
+    { name: "Products", href: "#product" },
+    { name: "Certifications", href: "#facilities" },
+    { name: "Why Us", href: "#whyUs" }
   ];
 
   const companyLinks = [
@@ -27,18 +27,21 @@ export default function Footer() {
   return (
     <footer className="bg-[#111111] text-white">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-12 py-6 md:py-8 xl:py-10">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-6">
 
           {/* Company Info & Newsletter */}
-          <div className="w-full lg:w-1/2">
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">Marcorp Industries</h3>
-            <p className="text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
-              Join thousands of businesses trading across borders with ease. Secure transactions, reliable logistics, and a hassle-free experience.
-            </p>
+          <div className="w-full lg:w-[40%] space-y-3 md:space-y-5">
+            <div>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">Marcorp Industries</h3>
+              <p className="text-gray-300  text-sm sm:text-base">
+                Join thousands of businesses trading across borders with ease. Secure transactions, reliable logistics, and a hassle-free experience.
+              </p>
+            </div>
+           
 
             {/* Social Media Icons */}
-            <div className="flex space-x-3 sm:space-x-4 mb-6 lg:mb-8">
+            <div className="flex space-x-3 sm:space-x-4">
               {socialMedia.map((social, index) => (
                 <a
                   key={index}
@@ -56,16 +59,18 @@ export default function Footer() {
               ))}
             </div>
 
+            <div className='w-full bg-[#383838] h-[1px]'> </div>
+
             {/* Newsletter Subscription */}
             <div className="space-y-3">
               <h4 className="font-semibold text-base sm:text-lg">Join our newsletter</h4>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-row gap-2 sm:gap-3">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-700 placeholder:text-[#7B7B7B] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="flex-1 bg-[#252525] px-3 sm:px-4 py-2 text-sm sm:text-base border border-[#57575766] placeholder:text-[#EFEDFD99] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
-                <button className="px-4 sm:px-6 py-2 bg-[#F3EEFF] text-gray-900 font-medium rounded-md hover:bg-gray-100 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap">
+                <button className="px-2 sm:px-6 py-2 bg-[#F3EEFF] text-[#000000] font-medium rounded-md hover:bg-gray-100 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap">
                   Subscribe
                 </button>
               </div>
@@ -73,8 +78,8 @@ export default function Footer() {
           </div>
 
           {/* Links and Contact Section */}
-          <div className="w-full lg:w-1/2">
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="w-full lg:w-[60%] space-y-3 md:space-y-5">
+            <div className="w-full grid grid-cols-2 md:flex justify-around gap-6 lg:gap-8">
               {/* Quick Links */}
               <div>
                 <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-[#F4F0FF]">Quick Links</h4>
@@ -110,7 +115,7 @@ export default function Footer() {
               </div>
 
               {/* Address & Contact */}
-              <div className="sm:col-span-2 lg:col-span-1">
+              <div className="hidden md:block">
                 <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-[#F4F0FF]">Address & Contact</h4>
                 <div className="space-y-3">
                   <div>
@@ -128,25 +133,45 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Address & Contact */}
+            <div className='md:hidden w-full bg-[#383838] h-[1px]'> </div>
+            <div className="block md:hidden">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-[#F4F0FF]">Address & Contact</h4>
+              <div className="space-y-3">
+                <div className='flex flex-row gap-1'>
+                  <p className="text-[#ABABAB] text-sm sm:text-base">Call support --</p>
+                  <p className="font-semibold text-[#EBEBEB] text-sm sm:text-base">+91-8585074646</p>
+                </div>
+                <div className='flex flex-row gap-1'>
+                  <p className="text-[#ABABAB] text-sm sm:text-base">Mail support --</p>
+                  <p className="font-semibold text-[#EBEBEB] text-sm sm:text-base break-all">office@marcorpindustries.com</p>
+                </div>
+                <div className='flex flex-row gap-1'> 
+                  <p className="text-[#ABABAB] text-sm sm:text-base">Visit Us --</p>
+                  <p className="font-semibold text-[#EBEBEB] text-sm sm:text-base">Newtown, Kolkata, India</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Copyright & Policies */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div className="border-t border-[#383838]">
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-12 py-2 md:py-3 xl:py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
             {/* Policy Links */}
-            <div className="flex flex-wrap justify-center sm:justify-start space-x-3 sm:space-x-4 text-xs sm:text-sm text-gray-400">
+            <div className="flex flex-wrap justify-center sm:justify-start space-x-3 sm:space-x-4 text-xs sm:text-sm text-[#FFFFFF]">
               <a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a>
               <span className="text-gray-600">•</span>
               <a href="#" className="hover:text-white transition-colors duration-200">Terms of Conditions</a>
-              <span className="text-gray-600">•</span>
-              <a href="#" className="hover:text-white transition-colors duration-200">Refund Policy</a>
+              <span className="hidden md:block text-gray-600">•</span>
+              <a href="#" className="hidden md:block hover:text-white transition-colors duration-200">Refund Policy</a>
             </div>
 
             {/* Copyright */}
-            <div className="text-xs sm:text-sm text-gray-400 text-center sm:text-left">
+            <div className="text-xs sm:text-sm text-[#FFFFFF] text-center sm:text-left">
               Copyright © 2025 Marcorp Industries Pvt. Ltd.
             </div>
           </div>

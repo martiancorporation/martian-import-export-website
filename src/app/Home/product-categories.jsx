@@ -44,16 +44,16 @@ export default function productCategories() {
             products: ["Branded FMCG exports Like - Haldiram products"]
         }
     ];
-  return (
-        <section className = "py-8 sm:py-12 lg:py-[50px] bg-global-7" >
-            <div className="w-full max-w-[1301px] mx-auto px-4 sm:px-6 lg:px-[70px]">
+    return (
+        <section id="product" className="w-full bg-global-7" >
+            <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 xl:px-12 py-6 md:py-8 xl:py-10">
                 <div className="space-y-6 sm:space-y-8 lg:space-y-[22px]">
                     {/* Section Header */}
                     <div className="text-center space-y-1 lg:space-y-[4px] max-w-4xl mx-auto">
-                        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-lato font-bold leading-tight lg:leading-[32px] text-global-1">
+                        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-lato font-bold leading-tight lg:leading-[32px] text-[#000000]">
                             Our Product Categories
                         </h2>
-                        <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[20px] text-global-8">
+                        <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[20px] text-[#4D4D4D]">
                             We specialize in sourcing and exporting a wide range of high-quality products across multiple industries.
                         </p>
                     </div>
@@ -80,7 +80,7 @@ export default function productCategories() {
                                             className="w-[32px] h-[32px]"
                                         />
                                     </div>
-                                    
+
                                 </div>
 
                                 {/* Product Info */}
@@ -89,7 +89,7 @@ export default function productCategories() {
                                         <h3 className="text-base sm:text-lg lg:text-[17px] font-lato font-semibold leading-tight lg:leading-[21px] text-[#000000]">
                                             {category.title}
                                         </h3>
-                                        <p className="text-xs sm:text-sm lg:text-[14px] font-lato font-normal leading-relaxed lg:leading-[20px] text-global-10">
+                                        <p className="text-[13px] sm:text-sm lg:text-[14px] font-lato font-normal leading-relaxed lg:leading-[20px] text-[#5E5E5E]">
                                             {category.description}
                                         </p>
                                     </div>
@@ -118,8 +118,10 @@ export default function productCategories() {
                                                 {category.brands.length > 3 && (
                                                     <div className="flex gap-2 lg:gap-[6px]">
                                                         {category.brands.slice(3).map((brand, index) => (
-                                                            <div key={index} className="bg-global-11 border-0 border-global-5 rounded-[4px] p-2 lg:p-[8px] flex items-center justify-center">
-                                                                <img
+                                                            <div key={index} className="bg-global-11 border border-[#EEEEEE] rounded-[4px] p-2 lg:p-[8px] flex items-center justify-center">
+                                                                <Image
+                                                                    width={100}
+                                                                    height={100}
                                                                     src={brand.logo}
                                                                     alt={brand.name}
                                                                     className="max-w-full max-h-[14px] object-contain"
@@ -143,7 +145,7 @@ export default function productCategories() {
                                                                 </button>
                                                             ))}
                                                         </div>
-                                                       
+
                                                     </>
                                                 )}
                                             </div>
@@ -155,27 +157,30 @@ export default function productCategories() {
                     </div>
 
                     {/* CTA Section */}
-                  <div className="bg-[#FFFFFF] border border-[#DDDDDD] rounded-[20px] p-4 sm:p-6 lg:p-[20px]">
+                    <div className="bg-[#FFFFFF] border border-[#DDDDDD] rounded-[20px] p-3 sm:p-6 lg:p-[20px]">
                         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
                             <div className="text-center lg:text-left space-y-1 lg:space-y-[4px]">
-                                <h3 className="text-lg sm:text-xl lg:text-[22px] font-lato font-semibold  text-[#000000]">
+                                <h3 className="text-lg sm:text-xl lg:text-[22px] font-lato font-semibold  text-[#121212]">
                                     Looking for something specific?
                                 </h3>
-                                <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[20px] text-global-10">
+                                <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[20px] text-[#5E5E5E]">
                                     We help source verified and export-ready products based on your business needs.
                                 </p>
                             </div>
+                            <a href="#contact"  >
+
                             <Button
                                 variant="primary"
-                              className="w-[200px] bg-[#1D1D1D] text-[#FFFFFF] px-6 sm:px-8 lg:px-[48px] py-3 sm:py-3.5 lg:py-[14px] rounded-[6px] text-sm sm:text-base lg:text-[15px] font-medium gap-2 lg:gap-[10px] flex-shrink-0"
+                                className="w-[200px] bg-[#1D1D1D] text-[#FFFFFF] px-6 sm:px-8 lg:px-[48px] py-3 sm:py-3.5 lg:py-[14px] rounded-[6px] text-sm sm:text-base lg:text-[15px] font-medium gap-2 lg:gap-[10px] flex-shrink-0"
                             >
-                              Contact Now
-                              <ArrowRight/>
+                                Contact Now
+                                <ArrowRight />
                             </Button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-      </section>
-  )
+        </section>
+    )
 }

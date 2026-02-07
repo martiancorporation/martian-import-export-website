@@ -7,8 +7,8 @@ export default function FounderNote() {
             className="relative "
 
         >
-            <div className="relative z-20 w-full  mx-auto  flex flex-col gap-8">
-                <div className="space-y-4">
+            <div className="relative z-20 w-full  mx-auto  flex flex-col gap-4 md:gap-8">
+                <div className="space-y-2 md:space-y-4">
                     <h2 className="text-xl md:text-3xl font-semibold text-white">Founder's Note</h2>
                     <p className="text-lg md:text-xl font-semibold text-white">Welcome to Marcorp Industries.</p>
                     <p className="text-base md:text-base text-white">
@@ -19,7 +19,7 @@ export default function FounderNote() {
                         Join hands with us and experience a partnership where integrity drives every transaction, and your success is our priority.
                     </p>
                 </div>
-                <div className="flex items-start gap-2 mt-6">
+                <div className="flex items-start gap-2 mt-4 md:mt-6">
                     <a href="https://www.linkedin.com/in/abid-hossain-biswas/" target="_blank" rel="noopener noreferrer">
                         <Image src="/assets/image/whyChoose/linkedin.svg" alt="LinkedIn" width={36} height={36} className="inline-block" />
                     </a>

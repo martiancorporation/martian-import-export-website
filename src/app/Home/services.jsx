@@ -52,8 +52,8 @@ export default function services() {
         }
     ];
     return (
-        <section className= "py-8 sm:py-12 lg:py-[30px] bg-[#F3F3F3]" >
-            <div className="w-full max-w-[1301px] mx-auto px-4 sm:px-6 lg:px-[70px]">
+        <section id="services" className="w-full bg-[#F3F3F3]" >
+            <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 xl:px-12 py-6 md:py-8 xl:py-10">
                 <div className="space-y-6 sm:space-y-8 lg:space-y-[22px]">
                     {/* Section Header */}
                     <div className="space-y-2 lg:space-y-[8px]">
@@ -67,7 +67,7 @@ export default function services() {
                     </div>
 
                     {/* Services Grid */}
-                    <div className="space-y-6 sm:space-y-8 lg:space-y-[16px]">
+                    <div className="space-y-4 md:space-y-6">
                         {services.map((serviceCategory, categoryIndex) => (
                             <div key={categoryIndex} className="space-y-2 lg:space-y-[6px]">
                                 <h3 className="text-sm sm:text-base lg:text-[16px] font-lato font-semibold leading-tight lg:leading-[20px] text-[#121212]">
@@ -87,7 +87,7 @@ export default function services() {
 
                                             {/* Content */}
                                             <div className="relative p-4 sm:p-5 lg:p-[14px] h-full flex flex-col justify-between ">
-                                                <div className="bg-[#F9F9F9] rounded-full  w-[56px] h-[56px] flex items-center justify-center flex-shrink-0">
+                                                <div className="bg-[#F9F9F9] rounded-full  w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
                                                     <Image
                                                         width={500}
                                                         height={500}
@@ -98,10 +98,10 @@ export default function services() {
                                                 </div>
 
                                                 <div className="space-y-2 lg:space-y-[6px] pt-4">
-                                                    <h4 className="text-base sm:text-lg lg:text-[18px] font-lato font-normal leading-tight lg:leading-[22px] text-global-1">
+                                                    <h4 className="text-base sm:text-lg lg:text-[18px] font-lato font-normal leading-tight lg:leading-[22px] text-[#000000]">
                                                         {service.title}
                                                     </h4>
-                                                    <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[24px] text-global-12">
+                                                    <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[24px] text-[#717171]">
                                                         {service.description}
                                                     </p>
                                                 </div>
@@ -114,6 +114,6 @@ export default function services() {
                     </div>
                 </div>
             </div>
-      </section>    
-  )
+        </section>
+    )
 }

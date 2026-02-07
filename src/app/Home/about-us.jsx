@@ -1,10 +1,12 @@
+import { Button } from '@/components/ui/button'
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
 export default function aboutUs() {
-  return (
-        <section className = "py-8 sm:py-12 lg:py-[44px] bg-[#F3F3F3]" >
-            <div className="w-full max-w-[1301px] mx-auto px-4 sm:px-6 lg:px-[70px]">
+    return (
+        <section id="about" className="w-full  bg-[#F3F3F3]" >
+            <div className="w-full max-w-[1440px] mx-auto px-4 md:px-12 py-6 md:py-8 xl:py-10">
                 <div className="space-y-6 sm:space-y-8 lg:space-y-[30px]">
                     {/* About Content */}
                     <div className="space-y-3 sm:space-y-4 lg:space-y-[12px]">
@@ -24,17 +26,17 @@ export default function aboutUs() {
                     {/* Mission & Vision Cards */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-[12px]">
                         {/* Mission Card */}
-                      <div className="bg-[#FFFFFF] border border-[#EEEEEE] rounded-[20px] p-4 sm:p-6 lg:p-[22px] relative overflow-hidden">
+                        <div className="bg-[#FFFFFF] border border-[#EEEEEE] rounded-[20px] p-4 sm:p-6 lg:p-[22px] relative overflow-hidden">
                             <div
                                 className="absolute inset-0 bg-cover bg-center opacity-10"
                                 style={{ backgroundImage: "url('/images/img_group.svg')" }}
                             ></div>
                             <div className="relative space-y-3 sm:space-y-4 lg:space-y-[14px]">
                                 <div className="flex items-center gap-3 lg:gap-[12px]">
-                                        <Image
+                                    <Image
                                         width={500}
                                         height={500}
-                                      src="/assets/image/about/mission.svg"
+                                        src="/assets/image/about/mission.svg"
                                         alt="Mission Icon"
                                         className="w-[50px] h-[50px]"
                                     />
@@ -49,14 +51,14 @@ export default function aboutUs() {
                         </div>
 
                         {/* Vision Card */}
-                      <div className="bg-[#FFFFFF] border border-[#EEEEEE] rounded-[20px] p-4 sm:p-6 lg:p-[22px] relative overflow-hidden">
+                        <div className="bg-[#FFFFFF] border border-[#EEEEEE] rounded-[20px] p-4 sm:p-6 lg:p-[22px] relative overflow-hidden">
                             <div
                                 className="absolute inset-0 bg-cover bg-center opacity-10"
                                 style={{ backgroundImage: "url('/images/img_group.svg')" }}
                             ></div>
                             <div className="relative space-y-3 sm:space-y-4 lg:space-y-[10px]">
                                 <div className="flex items-center gap-3 lg:gap-[12px]">
-                                  <Image
+                                    <Image
                                         width={500}
                                         height={500}
                                         src="/assets/image/about/vision.svg"
@@ -74,9 +76,20 @@ export default function aboutUs() {
                         </div>
                     </div>
 
-                    
+                    <a href="#contact"  >
+
+                        <Button
+                            variant="primary"
+                            className="w-[200px] bg-[#1D1D1D] text-[#FFFFFF] px-6 sm:px-8 lg:px-[48px] py-3 sm:py-3.5 lg:py-[14px] rounded-[6px] text-sm sm:text-base lg:text-[15px] font-medium gap-2 lg:gap-[10px] flex-shrink-0"
+                        >
+                            Contact Now
+                            <ArrowRight />
+                        </Button>
+                    </a>
+
+
                 </div>
             </div>
-      </section >
-  )
+        </section >
+    )
 }   
