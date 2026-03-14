@@ -75,7 +75,7 @@ export default function Header() {
                 {/* Mobile Menu Button */}
                 <button
                     className={`block md:hidden p-1.5 rounded-[6px] border transition-all duration-300 ${isMenuOpen
-                            ? 'bg-white text-black border-gray-300'
+                            ? 'bg-white text-black border-gray-300 '
                             : color
                                 ? 'bg-[#000000] text-white border-[#121212]'
                             : 'bg-[#FFFFFF38] text-white border border-[#FFFFFF4D]'
@@ -90,7 +90,7 @@ export default function Header() {
 
             {/* Mobile Navigation */}
             {isMenuOpen && (
-                <div className="h-full w-full  fixed inset-0 z-50 bg-white flex flex-col items-start justify-center space-y-6 transition-all duration-300 md:hidden pl-6 p-4">
+                <div className="h-full w-full  fixed inset-0 z-50 bg-white flex flex-col items-start justify-center space-y-6 transition-all duration-300 md:hidden pl-6 p-4 mt-12 md:mt-0">
                     <nav className="w-full h-full flex flex-col justify-start items-start space-y-6">
                         <Link
                             href="#home"
