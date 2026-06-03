@@ -23,9 +23,9 @@ const lato = Lato({
 });
 
 export const metadata = {
-  title: "Marcorp Industries",
+  title: "Marcorp Industries Private Limited - Indian Best Export Company ",
   description:
-    "Connecting India to the World – Import, Export, Expand.Join thousands of businesses trading across borders with ease. Secure transactions, reliable logistics, and a hassle-free experience.",
+    "Connecting India to the World – Import, Export, Expand. Join thousands of businesses trading across borders with ease. Secure transactions, reliable logistics, and a hassle-free experience.",
 };
 
 export default function RootLayout({ children }) {
