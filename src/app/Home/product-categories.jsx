@@ -8,7 +8,8 @@ export default function productCategories() {
         {
             id: 1,
             title: "Automobile & Spare Parts",
-            description: "Parts & Accessories for two-wheelers & three-wheelers",
+            description:
+                "Parts & Accessories for two-wheelers & three-wheelers",
             image: "/assets/image/product/one.png",
             icon: "/assets/image/product/one.svg",
             brands: [
@@ -22,26 +23,69 @@ export default function productCategories() {
         {
             id: 2,
             title: "Leather Goods",
-            description: "High-quality finished leather from trusted tanneries.",
+            description:
+                "High-quality finished leather from trusted tanneries.",
             image: "/assets/image/product/two.png",
             icon: "/assets/image/product/two.svg",
-            products: ["Wallets", "Handbags", "Belts", "Custom Accessories"]
+            products: [
+                "Wallets",
+                "Handbags",
+                "Belts",
+                "Custom Accessories"
+            ]
         },
         {
             id: 3,
             title: "Garment Materials",
-            description: "Sourced from certified textile hubs ensuring quality and sustainability.",
+            description:
+                "Sourced from certified textile hubs ensuring quality and sustainability.",
             image: "/assets/image/product/three.png",
             icon: "/assets/image/product/three.svg",
-            products: ["Color Dyes", "Cotton Yarns", "Fabrics"]
+            products: [
+                "Color Dyes",
+                "Cotton Yarns",
+                "Fabrics"
+            ]
         },
         {
             id: 4,
             title: "Food & Snacks",
-            description: "Convenient ready-to-eat snacks, including various dry options.",
+            description:
+                "Convenient ready-to-eat snacks and packaged food products for global markets.",
             image: "/assets/image/product/four.png",
             icon: "/assets/image/product/four.svg",
-            products: ["Branded FMCG exports Like - Haldiram products"]
+            products: [
+                "Haldiram Products",
+                "Dry Snacks",
+                "Packaged Foods"
+            ]
+        },
+        {
+            id: 5,
+            title: "Agricultural Products",
+            description:
+                "Fresh and naturally grown agricultural produce sourced directly from trusted farmers and agricultural partners.",
+            image: "/assets/image/product/agriculture.png",
+            icon: "/assets/image/product/agriculture_icon.svg",
+            products: [
+                "Fresh Vegetables",
+                "Aromatic Ginger",
+                "Makhana",
+                "Rice"
+            ]
+        },
+        {
+            id: 6,
+            title: "Dairy & Farm Products",
+            description:
+                "Premium farm-fresh dairy and poultry products supplied with a focus on quality, nutrition, and consistency.",
+            image: "/assets/image/product/dairy.png",
+            icon: "/assets/image/product/dairy_icon_one.svg",
+            products: [
+                "Eggs",
+                "Ghee",
+                "Milk Powder",
+            ]
         }
     ];
     return (
@@ -51,10 +95,13 @@ export default function productCategories() {
                     {/* Section Header */}
                     <div className="text-center space-y-1 lg:space-y-[4px] max-w-4xl mx-auto">
                         <h2 className="text-xl sm:text-2xl lg:text-[26px] font-lato font-bold leading-tight lg:leading-[32px] text-[#000000]">
-                            Our Product Categories
+                            Export Products We Supply Worldwide
                         </h2>
+
                         <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[20px] text-[#4D4D4D]">
-                            We specialize in sourcing and exporting a wide range of high-quality products across multiple industries.
+                            We source, supply, and export high-quality products across agriculture,
+                            dairy, automotive, textile, and FMCG sectors through a trusted network
+                            of verified manufacturers and suppliers.
                         </p>
                     </div>
 
@@ -71,13 +118,13 @@ export default function productCategories() {
                                         alt={category.title}
                                         className="w-full h-[140px] sm:h-[150px] lg:h-[162px] object-cover rounded-[14px]"
                                     />
-                                    <div className='absolute top-2 sm:top-3 lg:top-[6px] left-2 sm:left-3 lg:left-[8px] w-[32px] h-[32px] bg-white rounded-[6px] p-1 flex justify-center items-center'>
+                                    <div className='absolute top-2 sm:top-3 lg:top-[6px] left-2 sm:left-3 lg:left-[8px] size-11 bg-white rounded-[6px] p-1 flex justify-center items-center'>
                                         <Image
                                             src={category.icon}
                                             width={100}
                                             height={100}
                                             alt=""
-                                            className="w-[32px] h-[32px]"
+                                            className="size-10"
                                         />
                                     </div>
 
@@ -160,22 +207,24 @@ export default function productCategories() {
                     <div className="bg-[#FFFFFF] border border-[#DDDDDD] rounded-[20px] p-3 sm:p-6 lg:p-[20px]">
                         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
                             <div className="text-center lg:text-left space-y-1 lg:space-y-[4px]">
-                                <h3 className="text-lg sm:text-xl lg:text-[22px] font-lato font-semibold  text-[#121212]">
-                                    Looking for something specific?
+                                <h3 className="text-lg sm:text-xl lg:text-[22px] font-lato font-semibold text-[#121212]">
+                                    Looking for a reliable export partner?
                                 </h3>
+
                                 <p className="text-sm sm:text-base lg:text-[16px] font-lato font-normal leading-relaxed lg:leading-[20px] text-[#5E5E5E]">
-                                    We help source verified and export-ready products based on your business needs.
+                                    We help businesses worldwide source verified, export-ready products with
+                                    quality assurance, competitive pricing, and seamless logistics support.
                                 </p>
                             </div>
                             <a href="#contact"  >
 
-                            <Button
-                                variant="primary"
-                                className="w-[200px] bg-[#1D1D1D] text-[#FFFFFF] px-6 sm:px-8 lg:px-[48px] py-3 sm:py-3.5 lg:py-[14px] rounded-[6px] text-sm sm:text-base lg:text-[15px] font-medium gap-2 lg:gap-[10px] flex-shrink-0"
-                            >
-                                Contact Now
-                                <ArrowRight />
-                            </Button>
+                                <Button
+                                    variant="primary"
+                                    className="w-[200px] bg-[#1D1D1D] text-[#FFFFFF] px-6 sm:px-8 lg:px-[48px] py-3 sm:py-3.5 lg:py-[14px] rounded-[6px] text-sm sm:text-base lg:text-[15px] font-medium gap-2 lg:gap-[10px] flex-shrink-0"
+                                >
+                                    Contact Now
+                                    <ArrowRight />
+                                </Button>
                             </a>
                         </div>
                     </div>
